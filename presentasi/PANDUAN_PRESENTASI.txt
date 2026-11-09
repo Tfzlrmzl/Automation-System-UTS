@@ -1,0 +1,121 @@
+PANDUAN PRESENTASI UTS — TEPAT 15 MENIT
+Online Book Catalog Organizer
+Kelompok 01 — Muhammad Tafzil Rimzal (312310529)
+
+Alokasi mengikuti instruksi dosen:
+  00:00–05:00  Penjelasan masalah dan alur solusi (5 menit)
+  05:00–12:00  Demonstrasi langsung (7 menit)
+  12:00–15:00  Tanya jawab (3 menit)
+
+PERSIAPAN SEBELUM MULAI
+1. Pastikan laptop terhubung internet dan adaptor daya.
+2. Buka VS Code di folder utama proyek, bukan folder dokumentasi.
+3. Siapkan terminal dan jalankan dari root proyek:
+       .\.venv\Scripts\python.exe main.py --limit 30 --backup
+   Jalankan beberapa menit sebelum presentasi agar proses scraping tidak
+   menghabiskan waktu demo. Periksa terminal menyatakan 30 record berhasil.
+4. Buka browser pada output\index.html.
+5. Siapkan pintasan file di folder ini. Jangan ekstrak ZIP selama presentasi;
+   backup sudah dibuat dan siap ditunjukkan.
+6. Jika dosen menghendaki demonstrasi scraping langsung, jalankan perintah
+   pada langkah demo. Jika internet bermasalah, jelaskan kondisi secara jujur
+   dan tunjukkan hasil terakhir yang tersimpan.
+
+BAGIAN 1 — MASALAH & ALUR SOLUSI (00:00–05:00)
+
+00:00–00:40 | Pembukaan
+Perkenalkan diri, NIM, judul proyek, dan tujuan aplikasi.
+Jumlah anggota satu orang telah dikonfirmasi kepada dosen pengampu.
+
+00:40–01:40 | Masalah dan sumber
+Jelaskan bahwa katalog buku publik perlu dikumpulkan dan ditata tanpa
+membuka halaman satu per satu. Books to Scrape dipakai sebagai situs latihan
+publik; program mengikuti paginasi dan menargetkan setidaknya 30 buku.
+
+01:40–03:00 | Alur program
+Terangkan urutannya: requests mengambil halaman → BeautifulSoup membaca
+judul/harga/tautan/sampul → validasi dan regex membersihkan harga serta
+menyaring keyword → pathlib/csv menulis file → zipfile membuat backup.
+
+03:00–04:20 | Materi wajib
+Tunjukkan sekilas main.py dan hubungkan:
+- Regex harga: PRICE_PATTERN mengekstrak angka GBP.
+- Regex judul: keyword di-escape dan dicocokkan tanpa membedakan kapital.
+- File I/O: raw_data.txt, CSV, dan laporan.
+- Organisasi: folder otomatis dan backup ZIP.
+- CLI: --url, --keyword, --limit, --backup.
+
+04:20–05:00 | Ringkasan hasil
+Sebutkan dataset terakhir berisi 30 record. Kategori Premium/Standard adalah
+klasifikasi harga dengan ambang £30, bukan genre. CSV menyimpan GBP; halaman
+web menampilkan IDR dengan kurs acuan tetap yang tanggalnya ditampilkan.
+
+BAGIAN 2 — DEMONSTRASI LANGSUNG (05:00–12:00)
+
+05:00–06:30 | Jalankan aplikasi
+Di terminal VS Code, tunjukkan perintah:
+       .\.venv\Scripts\python.exe main.py --limit 30 --backup
+Jelaskan fungsi argumen dan tunjukkan ringkasan terminal. Bila scraping
+berhasil dijalankan pada persiapan, tidak perlu mengulang; tunjukkan perintah
+serta output sukses yang baru saja dihasilkan.
+
+06:30–08:15 | Tunjukkan katalog web
+Buka output\index.html. Perlihatkan beberapa sampul yang sesuai dengan judul,
+harga dalam rupiah, kartu koleksi, dan tampilan responsif.
+
+08:15–09:15 | Cari, filter, dan urutkan
+Cari satu kata judul, pilih filter Premium/Standard, lalu urutkan harga.
+Jelaskan bahwa fitur ini berjalan di halaman katalog lokal.
+
+09:15–10:15 | Periksa dataset dan ringkasan
+Buka output\hasil_scraping.csv dan output\laporan.txt. Tunjukkan judul,
+harga GBP, kategori harga, URL buku, URL gambar, serta ringkasan proses.
+
+10:15–11:15 | Tunjukkan file mentah dan backup
+Buka data\raw_data.txt, lalu backup\backup_data.zip. Tunjukkan bahwa ZIP
+berisi hasil_scraping.csv, index.html, laporan.txt, dan raw_data.txt.
+
+11:15–12:00 | Tunjukkan error handling
+Jelaskan validasi URL/limit, data kosong, dan kegagalan koneksi yang
+ditampilkan ke terminal. Jangan memutus jaringan saat demo kecuali sudah
+disiapkan; cukup tunjukkan bagian penanganan error di main.py.
+
+BAGIAN 3 — TANYA JAWAB (12:00–15:00)
+Gunakan kartu jawaban dalam file ini. Dengarkan pertanyaan sampai selesai,
+jawab inti terlebih dahulu, lalu kaitkan dengan kode/file hasil. Jika belum
+tahu, nyatakan batasnya dan jelaskan cara memverifikasi.
+
+DAFTAR FILE PENTING
+Presentasi_UTS_Automation_Systems_Final.pptx
+    Slide utama untuk presentasi 15 menit; pintasan "10 - PPT Presentasi".
+Video_Demo_UTS_Automation_Systems.mp4
+    Video demo ringkas 46 detik dengan teks/caption, tanpa audio; pintasan
+    "11 - Video Demo". Gunakan sebagai preview, bukan pengganti demo langsung.
+main.py
+    Program utama; pintasan "01 - Program Utama".
+output\index.html
+    Katalog untuk browser; pintasan "02 - Katalog Web".
+output\hasil_scraping.csv
+    Dataset; pintasan "03 - Dataset CSV".
+output\laporan.txt
+    Ringkasan proses; pintasan "04 - Ringkasan Hasil".
+backup\backup_data.zip
+    Backup terbaru; pintasan "05 - Backup ZIP".
+dokumentasi\laporan_uts.pdf
+    Laporan proyek; pintasan "06 - Laporan UTS PDF".
+dokumentasi\naskah_demo.txt
+    Naskah demo; pintasan "07 - Naskah Demo".
+PAKET_PENGUMPULAN.zip
+    Paket pengumpulan lengkap di folder presentasi ini.
+buat_ppt.py
+    Skrip untuk membuat ulang slide (memerlukan python-pptx).
+buat_video_demo.py
+    Skrip untuk membuat ulang video dari hasil proyek (memerlukan Pillow dan
+    imageio-ffmpeg di virtual environment proyek).
+
+CATATAN
+- Klik dua kali pintasan .lnk untuk membuka file aslinya.
+- Jalankan perintah Python dari root proyek.
+- README.md dan requirements.txt tersedia lewat pintasan di folder ini.
+- Video MP4 yang sudah dibuat tersedia di folder ini; presentasi langsung
+  tetap mengikuti arahan dosen dan agenda 5 + 7 + 3 menit.
