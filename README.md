@@ -6,7 +6,7 @@ Aplikasi otomatisasi berbasis Python untuk mengumpulkan, menyaring, mengorganisa
 ## Anggota Kelompok
 1. Muhammad Tafzil Rimzal — 312310529
 
-Proyek ini dikerjakan sendiri oleh Muhammad Tafzil Rimzal; jumlah anggota satu orang telah dikonfirmasi dan diperbolehkan oleh dosen pengampu.
+Proyek ini dikerjakan sendiri oleh Muhammad Tafzil Rimzal
 
 ---
 
